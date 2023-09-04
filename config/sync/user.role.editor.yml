@@ -1,0 +1,28 @@
+uuid: 9eea70c5-47f3-4efc-b5a8-99f176589c33
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.news
+  module:
+    - field_permissions
+    - field_ui
+    - node
+id: editor
+label: Editor
+weight: 5
+is_admin: null
+permissions:
+  - 'administer node display'
+  - 'administer node form display'
+  - 'create field_hash_tags'
+  - 'create news content'
+  - 'delete any news content'
+  - 'delete own news content'
+  - 'edit any news content'
+  - 'edit field_hash_tags'
+  - 'edit own field_hash_tags'
+  - 'edit own news content'
+  - 'view field_hash_tags'
+  - 'view news revisions'
+  - 'view own field_hash_tags'

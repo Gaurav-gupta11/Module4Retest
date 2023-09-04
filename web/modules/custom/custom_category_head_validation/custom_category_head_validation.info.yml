@@ -1,0 +1,5 @@
+name: 'Custom Category Head Validation'
+type: module
+description: 'Provides custom validation for the Category Head field on the Editor registration form.'
+core_version_requirement: ^9 || ^10
+package: Custom

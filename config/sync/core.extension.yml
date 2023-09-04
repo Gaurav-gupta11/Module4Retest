@@ -11,11 +11,16 @@ module:
   config: 0
   contact: 0
   contextual: 0
+  custom_category_head_validation: 0
+  custom_mail: 0
   datetime: 0
   dblog: 0
+  devel: 0
+  devel_generate: 0
   dynamic_page_cache: 0
   editor: 0
   field: 0
+  field_permissions: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -25,6 +30,7 @@ module:
   link: 0
   menu_link_content: 0
   menu_ui: 0
+  multiple_registration: 0
   mysql: 0
   node: 0
   options: 0
@@ -33,14 +39,17 @@ module:
   path_alias: 0
   search: 0
   shortcut: 0
+  smtp: 0
   system: 0
   taxonomy: 0
   text: 0
+  token: 0
   toolbar: 0
   tour: 0
   update: 0
   user: 0
   views_ui: 0
+  pathauto: 1
   views: 10
   standard: 1000
 theme:

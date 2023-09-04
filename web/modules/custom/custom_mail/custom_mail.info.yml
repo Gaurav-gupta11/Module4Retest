@@ -1,0 +1,5 @@
+name: 'Custom Mail'
+type: module
+description: 'Send an Email when Content is created or updated.'
+core_version_requirement: ^9 || ^10
+package: Custom

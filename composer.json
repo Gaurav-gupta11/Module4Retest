@@ -19,6 +19,11 @@
         "drupal/core-composer-scaffold": "^10.0",
         "drupal/core-project-message": "^10.0",
         "drupal/core-recommended": "^10.0",
+        "drupal/devel": "^5.1",
+        "drupal/field_permissions": "^1.2",
+        "drupal/multiple_registration": "^3.2",
+        "drupal/pathauto": "^1.11",
+        "drupal/smtp": "^1.2",
         "drush/drush": "^12.1"
     },
     "require-dev": {
