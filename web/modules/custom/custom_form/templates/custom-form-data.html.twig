@@ -1,0 +1,20 @@
+<div class="custom-form-data">
+  {% for group in content %}
+    <div class="leader-container">
+      <div class="leader-name">{{ group.leaderName }}</div>
+      <div class="leader-designation">{{ group.designation }}</div>
+      <div class="leader-linkedin-link">{{ group.linkedinLink }}</div>
+      {% if group.profileImage %}
+        <div class="leader-profile-image">
+          <img src="{{ group.profileImage }}" alt="Profile Image">
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+<div class="anchor-reference">
+  {% if anchorReference %}
+    <div class="anchor">Anchor Name: {{ anchorReference }}</div>
+    <div class="description">Description: {{ anchorDescription }}</div>
+  {% endif %}
+</div>

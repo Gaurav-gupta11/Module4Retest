@@ -6,6 +6,7 @@ dependencies:
     - system.menu.main
   module:
     - system
+    - user
   theme:
     - olivero
 _core:
@@ -24,4 +25,16 @@ settings:
   level: 1
   depth: 2
   expand_all_items: true
-visibility: {  }
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+      content_editor: content_editor
+      administrator: administrator
+      news_anchor: news_anchor
+      editor: editor

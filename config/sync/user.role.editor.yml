@@ -8,21 +8,31 @@ dependencies:
     - field_permissions
     - field_ui
     - node
+    - system
+    - toolbar
+    - views_ui
 id: editor
 label: Editor
 weight: 5
 is_admin: null
 permissions:
+  - 'access content overview'
+  - 'access toolbar'
   - 'administer node display'
+  - 'administer node fields'
   - 'administer node form display'
+  - 'administer views'
   - 'create field_hash_tags'
   - 'create news content'
   - 'delete any news content'
+  - 'delete news revisions'
   - 'delete own news content'
   - 'edit any news content'
   - 'edit field_hash_tags'
   - 'edit own field_hash_tags'
   - 'edit own news content'
+  - 'revert news revisions'
   - 'view field_hash_tags'
   - 'view news revisions'
   - 'view own field_hash_tags'
+  - 'view the administration theme'

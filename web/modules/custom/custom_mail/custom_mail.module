@@ -2,22 +2,20 @@
 /**
  * Implements hook_ENTITY_TYPE_presave() for node entities.
  */
-function custom_mail_node_presave(Drupal\node\NodeInterface $node) {
-  // Check if the entity being saved is of the "news" content type.
+
+ use Drupal\node\NodeInterface;
+
+function custom_mail_node_presave($node) {
   if ($node->getType() == 'news') {
-    // Retrieve the Editor's email address using the chain of references.
-    $editor_email = getEditorEmail($node); // Implement this function.
+    $editor_email = getEditorEmail($node);
 
     if ($editor_email) {
-      // Compose and send the email.
       $params = [
         'subject' => ('News Page Updated/Created'),
         'message' => ('A news page has been updated/created. Check it out!'),
       ];
-
-      // Use Drupal's mail manager to send the email.
       $mailManager = \Drupal::service('plugin.manager.mail');
-      $module = 'custom_mail'; // Replace with your module's name.
+      $module = 'custom_mail';
       $key = 'news_page_notification';
       $to = $editor_email;
       $language = \Drupal::currentUser()->getPreferredLangcode();
@@ -31,22 +29,18 @@ function custom_mail_node_presave(Drupal\node\NodeInterface $node) {
 /**
  * Custom function to retrieve the Editor's email address.
  */
-function getEditorEmail(Drupal\node\NodeInterface $node) {
+function getEditorEmail($node) {
   $editor_email = '';
   
-  // Get the reference to the News Anchor.
   $news_anchor_reference = $node->get('field_created_b')->entity;
   
   if ($news_anchor_reference && $news_anchor_reference instanceof Drupal\user\UserInterface) {
-    // Get the reference to the Editor in charge.
     $editor_in_charge_reference = $news_anchor_reference->get('field_editor_in_charge')->entity;
 
     if ($editor_in_charge_reference && $editor_in_charge_reference instanceof Drupal\user\UserInterface) {
-      // Get the email of the Editor in charge.
       $editor_email = $editor_in_charge_reference->getEmail();
     }
   }
-  
   return $editor_email;
 }
 

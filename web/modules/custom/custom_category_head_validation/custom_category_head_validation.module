@@ -28,7 +28,7 @@ function custom_category_head_validation_validate_category_head(array &$form, Fo
 
     // Perform the query with the extracted target_ids.
     $query = \Drupal::entityQuery('user')
-      ->condition('field_category_head.target_id', $targetIds, 'IN')
+      ->condition('field_category_head.target_id', $targetIds)
       ->condition('roles', ['editor']);
     $query->accessCheck(True);
     $existingEditorIds = $query->execute();
