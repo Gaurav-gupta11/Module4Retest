@@ -1,0 +1,57 @@
+<?php
+/**
+ * Implements hook_ENTITY_TYPE_presave() for node entities.
+ */
+
+ use Drupal\node\NodeInterface;
+
+function custom_mail_node_presave($node) {
+  if ($node->getType() == 'news') {
+    $editor_email = getEditorEmail($node);
+
+    if ($editor_email) {
+      $params = [
+        'subject' => ('News Page Updated/Created'),
+        'message' => ('A news page has been updated/created. Check it out!'),
+      ];
+      $mailManager = \Drupal::service('plugin.manager.mail');
+      $module = 'custom_mail';
+      $key = 'news_page_notification';
+      $to = $editor_email;
+      $language = \Drupal::currentUser()->getPreferredLangcode();
+      $send = true;
+
+      $mailManager->mail($module, $key, $to, $language, $params, NULL, $send);
+    }
+  }
+}
+
+/**
+ * Custom function to retrieve the Editor's email address.
+ */
+function getEditorEmail($node) {
+  $editor_email = '';
+  
+  $news_anchor_reference = $node->get('field_created_b')->entity;
+  
+  if ($news_anchor_reference && $news_anchor_reference instanceof Drupal\user\UserInterface) {
+    $editor_in_charge_reference = $news_anchor_reference->get('field_editor_in_charge')->entity;
+
+    if ($editor_in_charge_reference && $editor_in_charge_reference instanceof Drupal\user\UserInterface) {
+      $editor_email = $editor_in_charge_reference->getEmail();
+    }
+  }
+  return $editor_email;
+}
+
+/**
+ * Implements hook_mail() for custom_mail.
+ */
+function custom_mail_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'news_page_notification':
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['message'];
+      break;
+  }
+}

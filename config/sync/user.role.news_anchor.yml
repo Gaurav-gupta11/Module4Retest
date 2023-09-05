@@ -1,0 +1,28 @@
+uuid: bdef88b2-075b-4cde-ab05-d65b5fceb6ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.news
+  module:
+    - field_ui
+    - node
+    - system
+    - toolbar
+    - views_ui
+id: news_anchor
+label: 'News Anchor'
+weight: 4
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access toolbar'
+  - 'administer node display'
+  - 'administer node fields'
+  - 'administer node form display'
+  - 'administer views'
+  - 'create news content'
+  - 'delete own news content'
+  - 'edit own news content'
+  - 'view news revisions'
+  - 'view the administration theme'

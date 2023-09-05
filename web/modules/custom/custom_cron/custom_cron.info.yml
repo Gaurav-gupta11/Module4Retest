@@ -1,0 +1,5 @@
+name: 'Custom Cron'
+type: module
+description: 'Custom Cron to delete a node more than 6 months ago'
+core_version_requirement: ^9 || ^10
+package: Custom

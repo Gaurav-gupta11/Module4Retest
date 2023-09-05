@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ *
+ * This custom cron job deletes nodes of the 'news_page' content type
+ * that are older than six months.
+ */
+function custom_cron_cron() {
+  $sixMonthsAgo = strtotime('-6 months');
+  $formattedDate = date('Y-m-d', $sixMonthsAgo);
+  $timestamp = strtotime($formattedDate);
+
+  $query = \Drupal::entityQuery('node')
+    ->accessCheck(FALSE)
+    ->condition('type', 'news')
+    ->condition('created', $timestamp, '<');
+  
+  $entity_ids = $query->execute();
+
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  $nodes = $storage->loadMultiple($entity_ids);
+  $storage->delete($nodes);
+}
+

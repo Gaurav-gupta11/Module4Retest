@@ -1,0 +1,15 @@
+custom_form.form_route:
+  path: '/group-form'
+  defaults:
+    _title: 'Showing About Us Form'
+    _form: '\Drupal\custom_form\Form\CustomForm'
+  requirements:
+    _permission: 'access content'
+
+custom_form.about_us:
+  path: '/about-us'
+  defaults:
+    _controller: '\Drupal\custom_form\Controller\CustomFormController::aboutUsPage'
+    _title: 'About Us'
+  requirements:
+    _permission: 'access content'
